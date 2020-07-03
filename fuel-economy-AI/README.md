@@ -9,4 +9,5 @@ I prepared example data in the `training-data.js` file, which contains 15 differ
 ### The results
 
 ![](media/braintest.png)
-Pretty accurate, isn't it?
+
+#### Pretty accurate, isn't it?
