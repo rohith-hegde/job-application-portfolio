@@ -1,0 +1,40 @@
+{
+	"weatherbit": {
+		"api_key": "8a862d407df64771a7ed0140a2ec2756",
+		"units": "M",
+		"convert_to_F": true,
+		"postal_code": "07834",
+		"country": "US"
+	},
+	"tickIntervalS": 900,
+	"dewptTH": -1.5,
+	"indoor_maxTemp": 85,
+	"indoor_minTemp": 73.5,
+	"indoor_tempAdjust": -1.5,
+	"heater_enabled": false,
+	"tx_gpio_pin": 0,
+	"dht22_gpio_pin": 4,
+	"radioCodes_on": {
+		"fan": {
+			"int": 4551939,
+			"pulseLength": 182
+		},
+		"heater": {
+			"int": 4544259,
+			"pulseLength": 182
+		}
+	},
+	"radioCodes_off": {
+		"fan": {
+			"int": 4551948,
+			"pulseLength": 182
+		},
+		"heater": {
+			"int": 4544268,
+			"pulseLength": 182
+		}
+	},
+	"radioCode_delayMs": 200,
+	"radioCode_repeatTimes": 2,
+	"codesend_executable_path": "/root/resetterrf/rfoutlet/codesend"
+}
