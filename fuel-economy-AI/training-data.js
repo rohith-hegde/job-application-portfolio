@@ -1,5 +1,5 @@
 /**
- * 	This project is an example of how I built my own machine learning regressionmodel
+ * 	This project is an example of how I built my own machine learning regression model
  * 	I downloaded random data on the fuel economy of vehicles vs. their engine size and weight.
  * 	There are 2 inputs: engineDispL and curbWeightLb, and 1 output: miles per gallon
  * 	Heavier cars and cars with bigger engines tend to have lower MPG
