@@ -10,8 +10,8 @@ I wrote a script that automatically regulates the room's temperature based on th
 
 I then built a Raspberry Pi microcontroller that's linked to the DHT22 sensor and the radio transmitter. The program accesses the hardware GPIO pins of the RPi to read and send data.
 
-![](controller2.jpg)
-![](controller1.jpg)
+![](media/controller2.jpg)
+![](media/controller1.jpg)
 
 I chose to use Node.js because Javascript is a versatile language and Node.js has strong IoT support. Another focus was to make the code as asynchronous as possible and reliable enough to not randomly crash. I learned how Promises work and how they are superior to callbacks.
 
@@ -19,4 +19,4 @@ I chose to use Node.js because Javascript is a versatile language and Node.js ha
 
 I had to worry less about my computing equipment and more about the value/profit of the Ethereum and other coins that they were mining!
 
-![](cgm_11-17.jpg)
+![](media/cgm_11-17.jpg)
