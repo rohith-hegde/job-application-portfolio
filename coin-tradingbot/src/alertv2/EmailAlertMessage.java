@@ -31,8 +31,8 @@ public class EmailAlertMessage extends HTMLalertMessage
 	public void sendHTMLmessage() throws Exception 
 	{
 		Client client = Client.create();
-		client.addFilter(new HTTPBasicAuthFilter("api", "key-c48923d3900f83f17ab019523109caa1"));
-		WebResource webResource = client.resource("https://api.mailgun.net/v3/hammerhostmail.hammereditor.net" + "/messages");
+		client.addFilter(new HTTPBasicAuthFilter("api", "[API PRIVATE KEY CENSORED]"));
+		WebResource webResource = client.resource("https://api.mailgun.net/v3/[CENSORED]" + "/messages");
 		MultivaluedMapImpl formData = new MultivaluedMapImpl();
 		
 		formData.add("from", esri.getSenderName() + " <" + esri.getSenderReplyToAddress() + ">");

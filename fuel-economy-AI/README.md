@@ -1,6 +1,6 @@
 # Fuel economy AI
 
-### Uses basic machine learning to develop and apply a regression model
+### A regression model that uses basic machine learning
 
 This is a small program that I wrote in order to get started with machine learning. It relies on the popular and simple Brain.js library that trains a neural network based on input data. Then, when new data is fed into the network with an unknown answer, Brain.js estimates the solution.
 
