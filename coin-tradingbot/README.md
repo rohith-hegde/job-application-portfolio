@@ -12,7 +12,9 @@ Anyway, here's what I achieved so far:
 
 ### Exchange connections
 
-My trading bot supports the Poloniex and Bitfinex exchange websites. It uses the REST APIs of these exchanges to get information on coin prices, volumes, order books and other technical data. It can also perform actions such as making trades and canceling orders.
+My trading bot supports the Poloniex and Bitfinex exchange websites. It uses the REST APIs of these exchanges to get information on coin prices, volumes, order books and other technical data. It can also perform actions such as making trades and canceling orders. The robot stores historical trades, which can be used to develop new trading strategies and backtest them:
+
+![](media/tradetableexample.png)
 
 ### Technical analysis
 
