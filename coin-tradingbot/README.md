@@ -1,5 +1,7 @@
 # Coin Trading Bot
 
+![](media/cryptocurrency-trading-bot-stock.jpg)
+
 ### A program that automatically trades crypto coins to make a profit
 
 In 2016, I was very interested in crypto currencies like Bitcoin, Ethereum and Monero. I also just learned about Wall Street and high-frequency trading. I wanted to create my own trading bot and possibly make a profit and become rich!
