@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			h1 {
+				font-family: Arial;
+			}
+
+			h2 {
+				font-family: Arial;
+			}
+
+			p {
+				font-family: Arial;
+			}
+		</style>
+		<title>{title}</title>
+		<market style="display: none;">{marketID}</market>
+	</head>
+	<body>
+		<h2>Coin market tradingbot alert</h2>
+		<p><i>{time}</i></p>
+
+		<div style="text-align: left;">
+			<!-- <img src="http://www.hammereditor.net/images/tradingbot/{iconFilename}" style="width: 256px; height: 256px;"/>  -->
+			<img
+				src="http://192.168.1.50:8081/hammer-net/images/tradingbot/{iconFilename}"
+				style="width: 256px; height: 256px;"
+			/>
+
+			<h1>{title}</h1>
+			<p>{content}</p>
+
+			<br /><br />
+			<img
+				src="http://192.168.1.50:8081/hammer-net/images/tradingbot/psg/{screenshotFilename}"
+			/>
+		</div>
+	</body>
+</html>
