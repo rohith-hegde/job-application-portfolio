@@ -1,0 +1,118 @@
+a .collapsed
+{
+	font-weight: bold;
+}
+
+.btn-default:active
+{
+	outline: 0;
+}
+.btn-primary:active
+{
+	outline: 0;
+}
+
+/*.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+	outline: none;
+	outline: none;
+	outline-offset: -2px;
+}*/
+
+#listTools_table td
+{
+	padding: 5px;
+}
+
+.btn-default:focus
+{
+	background-color: #fff;
+	border-color: #ccc;
+	outline: 0;
+}
+.btn-primary:focus
+{
+	background-color: #337ab7;
+	border-color: #2e6da4;
+	outline: 0;
+}
+
+/*--------------------------Titles--------------------------------*/
+
+.slIcon
+{
+	display: inline;
+	vertical-align: top;
+	height: 16px;
+	width: 16px;
+	
+}
+
+.panel-title
+{
+	display: inline;
+}
+
+.serverTitle_separator
+{
+	height: 1px;
+	width: 20px;
+	display: inline;
+}
+
+.serverTitle_linkSeparator
+{
+	height: 1px;
+	width: 100px;
+	display: inline;
+}
+
+.serverTitle_quickStatus
+{
+	display: inline;
+}
+
+.serverInfo_table td
+{
+	padding: 5px;
+}
+
+.serverInfo_inline
+{
+	display: inline;
+}
+
+/*
+.serverInfo_buttonSeparator
+{
+	height: 1px;
+	width: 175px;
+	display: inline;
+}*/
+
+/*
+.slIcon_serverDedicated
+{
+	display: inline;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			height: 32px;
+			width: 32px;
+			padding-top: 32px;
+			overflow: hidden;
+			background: url(resources/glypicons/glyphicons-468-server-flag.png) no-repeat;
+}
+
+.slIcon .serverDedicated
+{
+	background: url(resources/glypicons/glyphicons-468-server-flag.png) no-repeat;
+}*/
+
+/*--------------------------Bootstrap extensions--------------------------------*/
+
+.label-gold
+{
+	background-color: #EDD900;
+}
+
+
+
