@@ -8,9 +8,9 @@ In 2015, I was very interested in databases and big data analysis. I was also pl
 
 I decided to create a website that tracked game servers and players. There were [competing server list sites](https://unturned-servers.net/) that provided information on the servers, but not the players. I wanted my site to track the individual players and answer questions like:
 
-    1. **Who are the top ranked Unturned players and which servers do they like?**
-    2. **Is there any way to use data to predict when a server is about to become popular?**
-    3. **Which regions/countries tend to attract which players?**
+1. **Who are the top ranked Unturned players and which servers do they like?**
+2. **Is there any way to use data to predict when a server is about to become popular?**
+3. **Which regions/countries tend to attract which players?**
 
 My program uses the [Steamworks API](https://partner.steamgames.com/doc/sdk/api) and connects to UDP port 27015-27100 of these game servers to fetch the stats and information on the players. It then stores the results in a MySQL database to be used and studied later. I decided to use JSP because I was familiar with Java. I used Bootstrap for the front end.
 
