@@ -25,3 +25,7 @@ A partially functional Java/JSP/Bootstrap web app that relies on MySQL and Steam
 ## Coinfarm front end
 
 An excerpt of the web application, written with Vue.js/Typescript/Node.js and the [CoreUI framework](https://coreui.io/vue-laravel/), that I designed and implemented for Coinfarm Technologies
+
+### License
+
+All of the code within this repository is free and open-source and may be used for commercial purposes
