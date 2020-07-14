@@ -14,4 +14,4 @@ Here's a sample of a few front end pages of the admin control panel:
 
 ![](media/dashboard.png)
 
-**Note: ** the CoreUI template code has been omitted due to copyright considerations
+**Note:** the CoreUI template code has been omitted due to copyright considerations
