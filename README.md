@@ -28,4 +28,4 @@ An excerpt of the web application, written with Vue.js/Typescript/Node.js and th
 
 ### License
 
-All of the code within this repository is free and open-source and may be used for commercial purposes
+All of the code within this repository is free and open-source and may be used for commercial purposes. Any libraries included in this repository are the property of their respective owners.
