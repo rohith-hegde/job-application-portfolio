@@ -52,4 +52,8 @@ These percentages are predictions of return for the next 30 candles.
 
 This server can run on a CPU or GPU. With a decent GPU, predicting a single frame takes < 50 ms. This makes it suitable for real-time trading. It can read chart patterns much faster than a human trader.
 
+# Architecture
 
+This application is part of a backtesting data pipeline:
+
+![](media/full_architecture.png)

@@ -1,0 +1,6 @@
+,value
+pair,SOL-USD
+candleIntervalS,60
+segmentDurationS,300000
+firstSegmentStartTime,2022-01-01 02:05:00+00:00
+lastSegmentEndTime,2022-02-04 19:24:59.999000+00:00
