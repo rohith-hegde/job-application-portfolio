@@ -1,0 +1,41 @@
+# All-model VRAM usage (Gaming PC, RTX 3060 @ 70% PL, Poetry):
+#   Not running:                        4140 MB
+#   Idle, listening:                    4395 MB
+#   Active (1 thread):                  5640 MB
+#   Active (12 threads):                6340 MB
+#   Active (48 threads):                6320 MB
+#   Active (480 threads):               6390 MB
+#   -------------------------------------------
+#   Application usage (1 thread):       1500 MB
+#   Application usage (480 threads):    2250 MB
+#   Inference time (per model): ~0.2 s.
+#   Total resp. time: ~2.5 s.
+
+# All-model RAM usage (Gaming PC, Ryzen 5 3600, Poetry):
+#   Task Manager MEM usage: 3.5 GB
+#   Task Manager CPU usage: 30-80 %
+#   -------------------------------
+#   Inference time (per model): ~2.3 s.
+#   Total resp. time: ~ 2.4s.
+
+# All-model RAM usage (Gaming PC, RTX 3060, Poetry):
+#   Task Manager MEM usage: 3.5 GB
+#   Task Manager CPU usage: < 20%
+#   -------------------------------
+#   Inference time (per model): ~0.5 s.
+#   Total resp. time: ~ 1.3s.
+
+# CPU usage (Gaming PC, Ryzen 5 3600, Poetry):
+# ai-regression-server:             < 4.5%
+# ai-regression-batch-backtesting:  < 20%
+
+# GPU usage (Gaming PC, RTX 3060 @ 70% PL, Poetry):
+# ai-regression-server (GPU-Z):                 < 13%
+# ai-regression-server (Task Manager CUDA):     < 40%
+
+# Throughput (Gaming PC, Ryzen 5 3600, Poetry):
+# ai-regression-server (CPU only):  ~24 req./min.
+# ai-regression-server (GPU):       ~466 req./min.
+
+
+# EC2 c5a = 20x more expensive for throughput

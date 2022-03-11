@@ -1,0 +1,495 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Coinfarm trading bot | AI regression",
+        "description": "An API for predicting the market outcomes of CandleFrame/CandleFrameMatrix input with the ai-regression models<br/><br/>Proprietary software. NOT TO BE DISTRIBUTED. Copyright (C) 2021 Coinfarm Ventures L.L.C.",
+        "contact": {
+            "Coinfarm Ventures L.L.C.": "[censored]"
+        },
+        "version": "0.3.4"
+    },
+    "paths": {
+        "/predictOutcomeCF": {
+            "post": {
+                "summary": "Predictcandleframeoutcome",
+                "operationId": "predictCandleFrameOutcome_predictOutcomeCF_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DPredictCandleFrameReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DPredictCandleFrameResp"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "post",
+                    "uri": "http://api-vpcl-proxy.[censored]/ai-regression/predictOutcomeCF",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                }
+            }
+        },
+        "/predictOutcomeCFM": {
+            "post": {
+                "summary": "Predictcandleframematrixoutcome",
+                "operationId": "predictCandleFrameMatrixOutcome_predictOutcomeCFM_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DPredictCandleFrameMatrixReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DPredictCandleFrameResp"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "post",
+                    "uri": "http://api-vpcl-proxy.[censored]/ai-regression/predictOutcomeCFM",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                }
+            }
+        },
+        "/predictOutcomeCFM_bin": {
+            "post": {
+                "summary": "Predictcandleframematrixoutcome",
+                "operationId": "predictCandleFrameMatrixOutcome_predictOutcomeCFM_bin_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_predictCandleFrameMatrixOutcome_predictOutcomeCFM_bin_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DPredictCandleFrameResp"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "post",
+                    "uri": "http://api-vpcl-proxy.[censored]/ai-regression/predictOutcomeCFM_bin",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                }
+            }
+        },
+        "/predictOutcomeCFM_batch": {
+            "post": {
+                "summary": "Predictcandleframematrixoutcomebatch",
+                "operationId": "predictCandleFrameMatrixOutcomeBatch_predictOutcomeCFM_batch_post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DPredictCandleFrameMatrixReqBatch"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DPredictCandleFrameRespBatch"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "post",
+                    "uri": "http://api-vpcl-proxy.[censored]/ai-regression/predictOutcomeCFM_batch",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                }
+            }
+        },
+        "/predictOutcomeCFM_batch_bin": {
+            "post": {
+                "summary": "Predictcandleframematrixoutcomebatch",
+                "operationId": "predictCandleFrameMatrixOutcomeBatch_predictOutcomeCFM_batch_bin_post",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Body_predictCandleFrameMatrixOutcomeBatch_predictOutcomeCFM_batch_bin_post"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DPredictCandleFrameRespBatch"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "post",
+                    "uri": "http://api-vpcl-proxy.[censored]/ai-regression/predictOutcomeCFM_batch_bin",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Body_predictCandleFrameMatrixOutcomeBatch_predictOutcomeCFM_batch_bin_post": {
+                "title": "Body_predictCandleFrameMatrixOutcomeBatch_predictOutcomeCFM_batch_bin_post",
+                "required": [
+                    "pickle"
+                ],
+                "type": "object",
+                "properties": {
+                    "pickle": {
+                        "title": "Pickle",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "Body_predictCandleFrameMatrixOutcome_predictOutcomeCFM_bin_post": {
+                "title": "Body_predictCandleFrameMatrixOutcome_predictOutcomeCFM_bin_post",
+                "required": [
+                    "pickle"
+                ],
+                "type": "object",
+                "properties": {
+                    "pickle": {
+                        "title": "Pickle",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "DPredictCandleFrameMatrixReq": {
+                "title": "DPredictCandleFrameMatrixReq",
+                "required": [
+                    "predictionTypes"
+                ],
+                "type": "object",
+                "properties": {
+                    "frameMatrix": {
+                        "title": "Framematrix"
+                    },
+                    "predictionTypes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DPredictionType"
+                        }
+                    }
+                }
+            },
+            "DPredictCandleFrameMatrixReqBatch": {
+                "title": "DPredictCandleFrameMatrixReqBatch",
+                "required": [
+                    "predictionTypes"
+                ],
+                "type": "object",
+                "properties": {
+                    "frameMatrixes": {
+                        "title": "Framematrixes"
+                    },
+                    "predictionTypes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DPredictionType"
+                        }
+                    }
+                }
+            },
+            "DPredictCandleFrameReq": {
+                "title": "DPredictCandleFrameReq",
+                "required": [
+                    "predictionTypes"
+                ],
+                "type": "object",
+                "properties": {
+                    "frame": {
+                        "title": "Frame"
+                    },
+                    "predictionTypes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DPredictionType"
+                        }
+                    }
+                }
+            },
+            "DPredictCandleFrameResp": {
+                "title": "DPredictCandleFrameResp",
+                "required": [
+                    "predictions"
+                ],
+                "type": "object",
+                "properties": {
+                    "predictions": {
+                        "$ref": "#/components/schemas/DReturnPredictions"
+                    }
+                }
+            },
+            "DPredictCandleFrameRespBatch": {
+                "title": "DPredictCandleFrameRespBatch",
+                "required": [
+                    "batchPredictions"
+                ],
+                "type": "object",
+                "properties": {
+                    "batchPredictions": {
+                        "$ref": "#/components/schemas/DReturnPredictionsBatch"
+                    }
+                }
+            },
+            "DPredictionType": {
+                "title": "DPredictionType",
+                "enum": [
+                    "maxRisePct",
+                    "maxDeclinePct",
+                    "endChangePct"
+                ],
+                "type": "string",
+                "description": "An enumeration."
+            },
+            "DReturnPredictions": {
+                "title": "DReturnPredictions",
+                "type": "object",
+                "properties": {
+                    "maxRisePct": {
+                        "title": "Maxrisepct",
+                        "type": "number"
+                    },
+                    "maxDeclinePct": {
+                        "title": "Maxdeclinepct",
+                        "type": "number"
+                    },
+                    "endChangePct": {
+                        "title": "Endchangepct",
+                        "type": "number"
+                    }
+                }
+            },
+            "DReturnPredictionsBatch": {
+                "title": "DReturnPredictionsBatch",
+                "type": "object",
+                "properties": {
+                    "maxRisePct": {
+                        "title": "Maxrisepct",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "maxDeclinePct": {
+                        "title": "Maxdeclinepct",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "endChangePct": {
+                        "title": "Endchangepct",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+    "x-amazon-apigateway-policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Principal": "*",
+                "Action": "execute-api:Invoke",
+                "Resource": "arn:aws:execute-api:us-east-2:[censored]9:[censored]/*/*/*",
+                "Condition": {
+                    "NotIpAddress": {
+                        "aws:SourceIp": "10.2.0.0/16",
+                        "aws:VpcSourceIp": "10.1.0.0/16"
+                    }
+                }
+            },
+            {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "execute-api:Invoke",
+                "Resource": "arn:aws:execute-api:us-east-2:[censored]9:[censored]/*/*/*"
+            }
+        ]
+    }
+}

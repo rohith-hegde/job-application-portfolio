@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "ai-regression-server"
+version = "0.4.3"
+description = "A server application on Keras/TF/FastAPI for predicting ai-regression models"
+authors = ["Coinfarm Ventures L.L.C."]
+license = "UNLICENSED"
+
+[[tool.poetry.source]]
+name = "CAR_TradingBot-Python-Private_DEV"
+url = "[censored]"
+default = true
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+numpy = "^1.19.5"
+pandas = "^1.3.3"
+coinfarm-trading-bot-historical-data-client = "^0.2.0"
+coinfarm-trading-bot-historical-labeling-client = "^0.2.1"
+nvidia-ml-py3 = "^7.352.0"
+tensorflow = "2.5.0"
+scikit-learn = "^0.24.2"
+scipy = "^1.7.3"
+dill = "^0.3.4"
+fastapi = "^0.70.1"
+uvicorn = "^0.16.0"
+tradingbot-py-common-classes = "^0.3.12"
+python-multipart = "^0.0.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

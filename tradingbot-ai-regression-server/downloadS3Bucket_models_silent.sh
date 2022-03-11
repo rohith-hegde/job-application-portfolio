@@ -1,0 +1,1 @@
+aws s3 sync s3://[censored] input/ --only-show-errors --include "models/completed/modelId-*" --exclude "models/checkpoints/*"

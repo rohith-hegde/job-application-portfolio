@@ -1,0 +1,7 @@
+*pycache*
+input/
+output/
+dist/
+localLog.txt
+*.pkb
+*.bmp

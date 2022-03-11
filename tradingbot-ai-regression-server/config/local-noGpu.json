@@ -1,0 +1,28 @@
+{
+	"aws": {
+		"region": "us-east-2"
+	},
+	"server": {
+		"port": 4006,
+		"disableCache": false
+	},
+	"modelsLoad": {
+		"disableGpu": true,
+		"maxBatchSize": 100,
+		"maxRisePct": {
+			"modelId": 1000,
+			"enabled": true,
+			"interpolateReturnMap": true
+		},
+		"maxDeclinePct": {
+			"modelId": 1014,
+			"enabled": true,
+			"interpolateReturnMap": true
+		},
+		"endChangePct": {
+			"modelId": 1013,
+			"enabled": true,
+			"interpolateReturnMap": true
+		}
+	}
+}
