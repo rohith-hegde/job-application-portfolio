@@ -106,7 +106,7 @@ public class AlertTestMain
 		final String content = "Price volatility for last " + volRcandles + " candles (" + (candleTimeS * volRcandles) + " s.) is <b>{volatilityCurrent}</b>, which is above a <b>{volatilityMax}</b> change for this time period!";
 		templateReplacements.put("iconFilename", "bearMarketIcon2.png");
 		
-		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "support@hammereditor.net", "Tradingbot alert | " + title);
+		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "[censored]", "Tradingbot alert | " + title);
 		//EmailAlertMessage emailAlert = new EmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		ScreenshotEmailAlertMessage emailAlert = new ScreenshotEmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		emailAlert.setPSGinfo(PCDtimespan.HOUR24, PCDcandlePeriod.MINUTE5, new File("\\\\ANNASERVER\\hammer-net\\images\\tradingbot/"));
@@ -162,7 +162,7 @@ public class AlertTestMain
 		final String content = "{priceType} price for last candle is <b>{currentPrice}</b>, which is <b>{priceCrossType} {rate}</b> for this time period!";
 		templateReplacements.put("iconFilename", "bullMarketIcon.png");
 		
-		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "support@hammereditor.net", "Tradingbot alert | " + title);
+		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "[censored]", "Tradingbot alert | " + title);
 		TemplateMessageReader tmr = new FileTemplateMessageReader("templateScreenshot1.html");
 		EmailAlertMessage emailAlert = new EmailAlertMessage(title, content, tmr, ei, templateReplacements);
 		rw.addAlert(emailAlert);
@@ -183,7 +183,7 @@ public class AlertTestMain
 		final String content = "{priceType} price for last candle is <b>{currentPrice}</b>, which is <b>{priceCrossType} {rate}</b> for this time period!";
 		templateReplacements.put("iconFilename", "bearMarketIcon2.png");
 		
-		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "support@hammereditor.net", "Tradingbot alert | " + title);
+		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "[censored]", "Tradingbot alert | " + title);
 		//EmailAlertMessage emailAlert = new EmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		ScreenshotEmailAlertMessage emailAlert = new ScreenshotEmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		emailAlert.setPSGinfo(PCDtimespan.HOUR24, PCDcandlePeriod.MINUTE5, new File("\\\\ANNASERVER\\hammer-net\\images\\tradingbot/"));
@@ -205,7 +205,7 @@ public class AlertTestMain
 		//MA rule determines market icon
 		rw.addRule(mar);
 		
-		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "support@hammereditor.net", "Tradingbot alert | " + title);
+		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "[censored]", "Tradingbot alert | " + title);
 		//EmailAlertMessage emailAlert = new EmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		ScreenshotEmailAlertMessage emailAlert = new ScreenshotEmailAlertMessage(title, content, ei);
 		emailAlert.setPSGinfo(PCDtimespan.HOUR24, PCDcandlePeriod.MINUTE5, new File("\\\\ANNASERVER\\hammer-net\\images\\tradingbot/"), new PSGmaInfo(20, 5, -1));
@@ -227,7 +227,7 @@ public class AlertTestMain
 		//MA rule determines market icon
 		rw.addRule(mar);
 		
-		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "support@hammereditor.net", "Tradingbot alert | " + title);
+		EmailInfo ei = new EmailInfo("Tradingbot", "nil@null.nl", "Administrator", "[censored]", "Tradingbot alert | " + title);
 		//EmailAlertMessage emailAlert = new EmailAlertMessage(title, content, ei, "templateScreenshot1.html", templateReplacements);
 		ScreenshotEmailAlertMessage emailAlert = new ScreenshotEmailAlertMessage(title, content, ei);
 		emailAlert.setPSGinfo(PCDtimespan.HOUR24, PCDcandlePeriod.MINUTE5, new File("\\\\ANNASERVER\\hammer-net\\images\\tradingbot/"), new PSGmaInfo(20, 5, -1));

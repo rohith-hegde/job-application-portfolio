@@ -1,0 +1,820 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/noPatternBt/singleBacktest": {
+            "post": {
+                "operationId": "NoPatternBtController_singleBacktest",
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "POST",
+                    "uri": "http://api-vpcl-proxy.dev.coinfarmtradingbot.net/no-pattern-bt/singleBacktest",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                },
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DSingleBacktestParams"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DTradeResultResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/noPatternBt/groupBacktest": {
+            "post": {
+                "operationId": "NoPatternBtController_groupBacktest",
+                "x-amazon-apigateway-integration": {
+                    "connectionId": "akttpr",
+                    "connectionType": "VPC_LINK",
+                    "responses": {
+                        "default": {
+                            "statusCode": 200
+                        }
+                    },
+                    "httpMethod": "POST",
+                    "uri": "http://api-vpcl-proxy.dev.coinfarmtradingbot.net/no-pattern-bt/groupBacktest",
+                    "passthroughBehavior": "when_no_match",
+                    "type": "http_proxy"
+                },
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DGroupBacktestParams"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DTradeResultGroupResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "title": "Coinfarm trading bot | Historical backtesting no-pattern",
+        "description": "An API for performing historical market backtests without chart patterns<br/><br/>Proprietary software. NOT TO BE DISTRIBUTED. Copyright (C) 2021 Coinfarm Ventures L.L.C.",
+        "version": "0.2.2",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "DDataSelectParamsByIdQuery": {
+                "type": "object",
+                "properties": {
+                    "exchange_domainName": {
+                        "type": "string"
+                    },
+                    "exchange_name": {
+                        "type": "string"
+                    },
+                    "segmentId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "exchange_domainName",
+                    "exchange_name",
+                    "segmentId"
+                ]
+            },
+            "CandlePrices": {
+                "type": "object",
+                "properties": {
+                    "open": {
+                        "type": "number"
+                    },
+                    "high": {
+                        "type": "number"
+                    },
+                    "low": {
+                        "type": "number"
+                    },
+                    "close": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "open",
+                    "high",
+                    "low",
+                    "close"
+                ]
+            },
+            "CandleVolumes": {
+                "type": "object",
+                "properties": {
+                    "base": {
+                        "type": "number"
+                    },
+                    "quote": {
+                        "type": "number"
+                    },
+                    "takerBuyBase": {
+                        "type": "number"
+                    },
+                    "takerBuyQuote": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "base"
+                ]
+            },
+            "Candle": {
+                "type": "object",
+                "properties": {
+                    "openTime": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "closeTime": {
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "tradeCt": {
+                        "type": "number"
+                    },
+                    "prices": {
+                        "$ref": "#/components/schemas/CandlePrices"
+                    },
+                    "volumes": {
+                        "$ref": "#/components/schemas/CandleVolumes"
+                    }
+                },
+                "required": [
+                    "openTime",
+                    "closeTime",
+                    "prices",
+                    "volumes"
+                ]
+            },
+            "DTradeEntryRequest": {
+                "type": "object",
+                "properties": {
+                    "entryType": {
+                        "type": "string",
+                        "enum": [
+                            "bullish",
+                            "bearish"
+                        ]
+                    },
+                    "entryCandle": {
+                        "$ref": "#/components/schemas/Candle"
+                    },
+                    "entryPrice_noFee": {
+                        "type": "number"
+                    },
+                    "entryQty": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "entryType",
+                    "entryCandle"
+                ]
+            },
+            "DProfitExitStrategy": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "DLossExitStrategy": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "DCompoundExitStrategy": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "profitSubStrategies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DProfitExitStrategy"
+                        }
+                    },
+                    "lossSubStrategies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DLossExitStrategy"
+                        }
+                    }
+                },
+                "required": [
+                    "name",
+                    "profitSubStrategies",
+                    "lossSubStrategies"
+                ]
+            },
+            "DExchangeTradeFeeTier": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "makerFeePct": {
+                        "type": "number"
+                    },
+                    "takerFeePct": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "name",
+                    "makerFeePct",
+                    "takerFeePct"
+                ]
+            },
+            "DSingleBacktestParams": {
+                "type": "object",
+                "properties": {
+                    "segmentParams": {
+                        "$ref": "#/components/schemas/DDataSelectParamsByIdQuery"
+                    },
+                    "entryInfo": {
+                        "$ref": "#/components/schemas/DTradeEntryRequest"
+                    },
+                    "exitStrategy": {
+                        "$ref": "#/components/schemas/DCompoundExitStrategy"
+                    },
+                    "tradeFeeInfo": {
+                        "$ref": "#/components/schemas/DExchangeTradeFeeTier"
+                    },
+                    "entryForceType": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "instant",
+                            "other"
+                        ]
+                    },
+                    "entryStagesAllowed": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "skipped",
+                                "instant",
+                                "pullback"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "segmentParams",
+                    "entryInfo",
+                    "exitStrategy",
+                    "tradeFeeInfo"
+                ]
+            },
+            "DTradeEntry": {
+                "type": "object",
+                "properties": {
+                    "entryType": {
+                        "type": "string",
+                        "enum": [
+                            "bullish",
+                            "bearish"
+                        ]
+                    },
+                    "entryStage": {
+                        "type": "string",
+                        "enum": [
+                            "skipped",
+                            "instant",
+                            "pullback"
+                        ]
+                    },
+                    "forcedType": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "instant",
+                            "other"
+                        ]
+                    },
+                    "entryCandle": {
+                        "$ref": "#/components/schemas/Candle"
+                    },
+                    "entryPrice": {
+                        "type": "number"
+                    },
+                    "entryPrice_noFee": {
+                        "type": "number"
+                    },
+                    "entryQty": {
+                        "type": "number"
+                    },
+                    "entryCost": {
+                        "type": "number"
+                    },
+                    "entryCost_noFee": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "entryType",
+                    "entryStage",
+                    "forcedType",
+                    "entryCandle",
+                    "entryPrice",
+                    "entryPrice_noFee",
+                    "entryQty",
+                    "entryCost",
+                    "entryCost_noFee"
+                ]
+            },
+            "DExitStrategy": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "DTradeExit": {
+                "type": "object",
+                "properties": {
+                    "exitCandle": {
+                        "$ref": "#/components/schemas/Candle"
+                    },
+                    "exitCandles": {
+                        "type": "number"
+                    },
+                    "exitPrice": {
+                        "type": "number"
+                    },
+                    "exitPrice_noFee": {
+                        "type": "number"
+                    },
+                    "exitQty": {
+                        "type": "number"
+                    },
+                    "exitRevenue": {
+                        "type": "number"
+                    },
+                    "exitRevenue_noFee": {
+                        "type": "number"
+                    },
+                    "priceTargetReached": {
+                        "type": "boolean"
+                    },
+                    "strategyExited": {
+                        "$ref": "#/components/schemas/DExitStrategy"
+                    }
+                },
+                "required": [
+                    "exitCandle",
+                    "exitCandles",
+                    "exitPrice",
+                    "exitPrice_noFee",
+                    "exitQty",
+                    "exitRevenue",
+                    "exitRevenue_noFee",
+                    "priceTargetReached",
+                    "strategyExited"
+                ]
+            },
+            "DTradeProfit": {
+                "type": "object",
+                "properties": {
+                    "profit": {
+                        "type": "number"
+                    },
+                    "profit_noFee": {
+                        "type": "number"
+                    },
+                    "profitMargin": {
+                        "type": "number"
+                    },
+                    "profitMargin_noFee": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "profit",
+                    "profit_noFee",
+                    "profitMargin",
+                    "profitMargin_noFee"
+                ]
+            },
+            "DTradeFeeCharged": {
+                "type": "object",
+                "properties": {
+                    "feeTier": {
+                        "$ref": "#/components/schemas/DExchangeTradeFeeTier"
+                    },
+                    "entry_feeType": {
+                        "type": "string",
+                        "enum": [
+                            "maker",
+                            "taker",
+                            "free"
+                        ]
+                    },
+                    "entry_feeCharged": {
+                        "type": "number"
+                    },
+                    "exit_feeType": {
+                        "type": "string",
+                        "enum": [
+                            "maker",
+                            "taker",
+                            "free"
+                        ]
+                    },
+                    "exit_feeCharged": {
+                        "type": "number"
+                    },
+                    "totalFeeCharged": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "feeTier",
+                    "entry_feeType",
+                    "entry_feeCharged",
+                    "exit_feeType",
+                    "exit_feeCharged",
+                    "totalFeeCharged"
+                ]
+            },
+            "DTradeResult": {
+                "type": "object",
+                "properties": {
+                    "entryInfo": {
+                        "$ref": "#/components/schemas/DTradeEntry"
+                    },
+                    "exitInfo": {
+                        "$ref": "#/components/schemas/DTradeExit"
+                    },
+                    "profitInfo": {
+                        "$ref": "#/components/schemas/DTradeProfit"
+                    },
+                    "feeInfo": {
+                        "$ref": "#/components/schemas/DTradeFeeCharged"
+                    }
+                },
+                "required": [
+                    "profitInfo",
+                    "feeInfo"
+                ]
+            },
+            "DTradeResultPerformanceInfo": {
+                "type": "object",
+                "properties": {
+                    "initTimeMs": {
+                        "type": "number"
+                    },
+                    "operationTimeMs": {
+                        "type": "number"
+                    }
+                }
+            },
+            "DTradeResultResponse": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "$ref": "#/components/schemas/DTradeResult"
+                    },
+                    "performance": {
+                        "$ref": "#/components/schemas/DTradeResultPerformanceInfo"
+                    }
+                },
+                "required": [
+                    "result"
+                ]
+            },
+            "DGroupBacktestParams": {
+                "type": "object",
+                "properties": {
+                    "segmentsParams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DDataSelectParamsByIdQuery"
+                        }
+                    },
+                    "entriesInfo": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DTradeEntryRequest"
+                        }
+                    },
+                    "exitStrategies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DCompoundExitStrategy"
+                        }
+                    },
+                    "tradeFeeInfo": {
+                        "$ref": "#/components/schemas/DExchangeTradeFeeTier"
+                    },
+                    "resultSampleGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "<ALL RESULTS>",
+                                "entryType",
+                                "entryStage",
+                                "exchange",
+                                "market",
+                                "candleInterval",
+                                "priceTargetReached",
+                                "exitStrategyExecuted",
+                                "sampleSplit",
+                                "forcedEntryType"
+                            ]
+                        }
+                    },
+                    "entryForceType": {
+                        "type": "string",
+                        "enum": [
+                            "none",
+                            "instant",
+                            "other"
+                        ]
+                    },
+                    "entryStagesAllowed": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "skipped",
+                                "instant",
+                                "pullback"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "segmentsParams",
+                    "entriesInfo",
+                    "exitStrategies",
+                    "tradeFeeInfo",
+                    "resultSampleGroups"
+                ]
+            },
+            "DSampleStatsSummary": {
+                "type": "object",
+                "properties": {
+                    "mean": {
+                        "type": "number"
+                    },
+                    "min": {
+                        "type": "number"
+                    },
+                    "firstQuartile": {
+                        "type": "number"
+                    },
+                    "median": {
+                        "type": "number"
+                    },
+                    "thirdQuartile": {
+                        "type": "number"
+                    },
+                    "max": {
+                        "type": "number"
+                    },
+                    "range": {
+                        "type": "number"
+                    },
+                    "stdDev": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "mean",
+                    "min",
+                    "firstQuartile",
+                    "median",
+                    "thirdQuartile",
+                    "max",
+                    "range",
+                    "stdDev"
+                ]
+            },
+            "DConfidenceIntervalResult": {
+                "type": "object",
+                "properties": {
+                    "lowerLimit": {
+                        "type": "number"
+                    },
+                    "upperLimit": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "lowerLimit",
+                    "upperLimit"
+                ]
+            },
+            "DBacktestStatistics": {
+                "type": "object",
+                "properties": {
+                    "sortedValues": {
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    },
+                    "summary": {
+                        "$ref": "#/components/schemas/DSampleStatsSummary"
+                    },
+                    "negativeCount": {
+                        "type": "number"
+                    },
+                    "positiveCount": {
+                        "type": "number"
+                    },
+                    "negativeProportion": {
+                        "type": "number"
+                    },
+                    "positiveProportion": {
+                        "type": "number"
+                    },
+                    "negativeProportionCI_95": {
+                        "$ref": "#/components/schemas/DConfidenceIntervalResult"
+                    },
+                    "positiveProportionCI_95": {
+                        "$ref": "#/components/schemas/DConfidenceIntervalResult"
+                    },
+                    "meanCI_95": {
+                        "$ref": "#/components/schemas/DConfidenceIntervalResult"
+                    }
+                },
+                "required": [
+                    "sortedValues",
+                    "summary",
+                    "negativeCount",
+                    "positiveCount",
+                    "negativeProportion",
+                    "positiveProportion",
+                    "negativeProportionCI_95",
+                    "positiveProportionCI_95",
+                    "meanCI_95"
+                ]
+            },
+            "DSampleProfit": {
+                "type": "object",
+                "properties": {
+                    "profitMargin": {
+                        "$ref": "#/components/schemas/DBacktestStatistics"
+                    },
+                    "profitMargin_noFee": {
+                        "$ref": "#/components/schemas/DBacktestStatistics"
+                    }
+                },
+                "required": [
+                    "profitMargin",
+                    "profitMargin_noFee"
+                ]
+            },
+            "DSampleExits": {
+                "type": "object",
+                "properties": {
+                    "candlesToExit": {
+                        "$ref": "#/components/schemas/DBacktestStatistics"
+                    },
+                    "timeToExitSec": {
+                        "$ref": "#/components/schemas/DBacktestStatistics"
+                    },
+                    "priceTargetsReached": {
+                        "$ref": "#/components/schemas/DBacktestStatistics"
+                    }
+                },
+                "required": [
+                    "candlesToExit",
+                    "timeToExitSec",
+                    "priceTargetsReached"
+                ]
+            },
+            "DSampleResults": {
+                "type": "object",
+                "properties": {
+                    "sampleSize": {
+                        "type": "number"
+                    },
+                    "profitInfo": {
+                        "$ref": "#/components/schemas/DSampleProfit"
+                    },
+                    "exitInfo": {
+                        "$ref": "#/components/schemas/DSampleExits"
+                    },
+                    "individualResults": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DTradeResult"
+                        }
+                    }
+                },
+                "required": [
+                    "sampleSize",
+                    "profitInfo",
+                    "individualResults"
+                ]
+            },
+            "DGroupedSampleResults": {
+                "type": "object",
+                "properties": {
+                    "groupedByAll": {
+                        "$ref": "#/components/schemas/DSampleResults"
+                    }
+                },
+                "required": [
+                    "groupedByAll"
+                ]
+            },
+            "DTradeResultGroupResponse": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "$ref": "#/components/schemas/DGroupedSampleResults"
+                    },
+                    "performance": {
+                        "$ref": "#/components/schemas/DTradeResultPerformanceInfo"
+                    }
+                },
+                "required": [
+                    "results"
+                ]
+            }
+        }
+    },
+    "x-amazon-apigateway-policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Principal": "*",
+                "Action": "execute-api:Invoke",
+                "Resource": "arn:aws:execute-api:us-east-2:[censored]:[censored]/*/*/*",
+                "Condition": {
+                    "NotIpAddress": {
+                        "aws:SourceIp": "10.2.0.0/16",
+                        "aws:VpcSourceIp": "10.1.0.0/16"
+                    }
+                }
+            },
+            {
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "execute-api:Invoke",
+                "Resource": "arn:aws:execute-api:us-east-2:[censored]:[censored]/*/*/*"
+            }
+        ]
+    }
+}

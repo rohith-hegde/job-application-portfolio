@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm run echoVersion
+      - pip3 install awscli --upgrade --user
+      - aws codeartifact login --tool npm --domain coinfarmtradingbot-priv --domain-owner [censored] --repository CAR_TradingBot-NodeJS-Private_DEV
+      - rm -f .npmrc
+      - npm run refreshNpmRcFile
+      - npm install
+  pre_build:
+    commands:
+      - npm run ecrLogin:codeBuild
+      - REPOSITORY_URI=[censored].dkr.ecr.us-east-2.amazonaws.com/coinfarmtradingbot/historical-backtesting-server
+      - IMAGE_TAG=latest
+  build:
+    commands:
+      - 'npm run buildDockerImage:ecs'
+      - 'npm run pushDockerImage:ecs:version'
+      - 'npm run pushDockerImage:ecs:latest'
+      - echo Writing image definitions file...
+      - printf '[{"name":"ECC_TradingBot-HistoricalBacktestingServer_DEV","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json

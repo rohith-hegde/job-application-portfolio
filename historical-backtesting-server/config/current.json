@@ -1,0 +1,14 @@
+{
+	"listenHostname": "0.0.0.0",
+	"listenPort": 3005,
+	"maxBacktestThreads": 10,
+	"apisdk_historicalData": {
+		"protocol": "http",
+		"hostname": "historicaldata.dev.coinfarmtradingbot.priv",
+		"port": 4002,
+		"basePath": "historicalData"
+	},
+	"apisdk_historicalData_XHDS_cache": {
+		"maxObjects": 200
+	}
+}

@@ -1,0 +1,37 @@
+FROM node:16
+
+ARG configName=config-local-docker
+
+RUN su - && apt update
+RUN su - && apt install openssh-server nano htop -y
+
+RUN su - && mkdir /root/.ssh 
+COPY KYP_TradingBot-Test_DEV.pub /root/.ssh/authorized_keys
+RUN su - && echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
+
+# WORKDIR /historicalDataFS
+# COPY historicalData/ historicalData/
+# COPY historicalLabels/ historicalLabels/
+
+WORKDIR /webapps
+
+COPY tsconfig.json historical-backtesting-server/
+COPY tsconfig.build.json historical-backtesting-server/
+COPY package.json historical-backtesting-server/
+COPY nest-cli.json historical-backtesting-server/
+COPY src/ historical-backtesting-server/src
+COPY config/ historical-backtesting-server/config
+
+WORKDIR /webapps/historical-backtesting-server
+
+COPY .npmrc .npmrc
+RUN npm install --legacy-peer-deps --no-optional
+RUN rm -f .npmrc
+
+RUN rm config/current.json
+COPY config/${configName}.json config/current.json
+
+RUN npm run build
+
+CMD service ssh restart && npm run start:debug
+EXPOSE 22 4005 40005
